@@ -6,7 +6,14 @@
     <title>result.html</title>
 </head>
 <body>
-    {% if result %}
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+    {% if result is not None %}
         <h2>The operation result is :</h2>
         <p>{{ result }}</p>
     {% endif %}
